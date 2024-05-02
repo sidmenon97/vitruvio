@@ -359,7 +359,7 @@ TSharedPtr<SSpinBox<double>> CreateNumericInputWidget(Attr* Attribute, TSharedPt
 				FloatProperty->SetValue(Value);
 			}
 		}
-	};
+	}; 
 
 	// clang-format off
 	auto ValueWidget = SNew(SSpinBox<double>)
@@ -401,9 +401,9 @@ FResetToDefaultOverride ResetToDefaultOverride(URuleAttribute* Attribute, UVitru
 	FResetToDefaultOverride ResetToDefaultOverride = FResetToDefaultOverride::Create(
 		FIsResetToDefaultVisible::CreateLambda([Attribute](TSharedPtr<IPropertyHandle> Property) { return Attribute->bUserSet; }),
 		FResetToDefaultHandler::CreateLambda([Attribute, VitruvioActor](TSharedPtr<IPropertyHandle> Property) {
-				Attribute->bUserSet = false;
-				VitruvioActor->EvaluateRuleAttributes(VitruvioActor->GenerateAutomatically);
-			}));
+			Attribute->bUserSet = false;
+			VitruvioActor->EvaluateRuleAttributes(VitruvioActor->GenerateAutomatically);
+		}));
 	return ResetToDefaultOverride;
 }
 
